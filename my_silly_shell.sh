@@ -6,3 +6,4 @@ echo 'Hello world'
 echo 'Hello world'
 #! /bin/bash
 echo 'Hello world'
+hello git
