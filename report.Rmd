@@ -75,8 +75,3 @@ tm_shape(counties) +
             legend.position = c('LEFT', 'BOTTOM'))
 ```
 Basic description of figure: Appears to be more cases on the East Coast, although missing data in California limits the support for this interpretation.
-
-<!--
-Paige Harton: 1
-Izzy Saridakis: 1
--->
