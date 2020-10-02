@@ -1,0 +1,82 @@
+---
+title: "INFO 550 Homework 3 Submission"
+author: "Daniel Thomas"
+date: "`r format(Sys.Date(), '%Y-%m-%d')`"
+output: html_document
+---
+
+### Load packages
+
+```{r call-packages}
+library(tidyverse)
+library(tigris)
+library(sf)
+library(tmap)
+```
+
+### Import some data
+
+```{r import-data}
+data <- read.csv("us-counties.csv")
+```
+
+### Summary functions
+
+```{r examine-data}
+dim(data)
+summary(data)
+```
+
+### Data Cleaning
+
+```{r clean-data}
+data <- data %>%
+  filter(is.na(fips) == F) 
+
+options(tigris_use_cache = T)
+us <- counties(cb = TRUE, resolution = '5m',
+               class = 'sf',
+               year = 2019) %>%
+  st_transform(5070)
+
+us <- us %>%
+  filter(!(STATEFP %in% c('02', '15', '66', '60', '78', '72', '69')))
+
+data$fips <- as.character(data$fips)
+```
+
+```{r long-cleaning-step}
+counties <- us %>%
+  left_join(data, by = c('GEOID' = 'fips')) %>%
+  group_by(county) %>%
+  summarise(totalcases = sum(cases))
+```
+
+### Mapping
+
+<!--
+This map is pretty close to just a population map, but it is an example of a figure that I might include in my final project.
+-->
+
+
+```{r Map}
+tm_shape(counties) + 
+  tm_fill('totalcases',
+          style = 'quantile',
+          palette = 'BuPu',
+          title = 'Cases') + 
+  tm_borders(alpha = 0.2) +
+  tm_credits('Source: The New York Times',
+             position = c('RIGHT', 'TOP')) + 
+  tm_layout(main.title = 'Total COVID-19 Cases by County',
+            main.title.size = 1.2,
+            legend.title.size = .8,
+            legend.text.size = .6,
+            legend.position = c('LEFT', 'BOTTOM'))
+```
+Basic description of figure: Appears to be more cases on the East Coast, although missing data in California limits the support for this interpretation.
+
+<!--
+Paige Harton: 1
+Izzy Saridakis: 1
+-->
