@@ -1,7 +1,7 @@
 ## INFO 550
 
 ### Final Project
-For my project, I will analyze some basic COVID-19 data.
+For my project, I will analyze some basic COVID-19 data and produce a map.
 
 To analyze the data, you will need to install some R packages. The required packages can be installed using `R` commands.
 
