@@ -1,12 +1,8 @@
 ## INFO 550
 
 ### Final Project
-For my project, I will analyze some basic COVID-19 data and produce a map.
+For my project, I will analyze some basic chimp genetic data and produce a histogram.
 
-To analyze the data, you will need to install some R packages. The required packages can be installed using `make install` in the terminal.
+To access the analysis, after being labelled as a collaborator, you can run `docker pull dpthomas/info550dockerrepo:latest` to pull the image.
 
-### Execute the analysis
-
-To execute the analysis, from the project folder you can run `make report` in the terminal.
-
-This will create a file called `report.html` output in your directory that contains the results.
+Within the image, mount the ________ to a local directory to retrieve the output. This output will be a file called `report.html` output in your directory that contains the results.

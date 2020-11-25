@@ -1,0 +1,12 @@
+---
+title: "INFO 550 Homework 7 Submission"
+author: "Daniel Thomas"
+date: "`r format(Sys.Date(), '%Y-%m-%d')`"
+output: html_document
+---
+## Report
+
+Here's a basic plot of chimpanzee gene lengths.
+
+![a basic plot](../plots/plot1.png)
+
